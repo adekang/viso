@@ -19,7 +19,7 @@ public class WordsController extends BaseController {
     @Autowired
     private WordsService wordsService;
 
-    @RequestMapping("/selectWordByTitle")
+    @RequestMapping("/findAllByCategory")
     public JsonResult<List<WordsEntity>> selectWordByTitle(@RequestParam String category) {
         QueryWrapper<WordsEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("category", category);
