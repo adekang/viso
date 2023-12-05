@@ -1,15 +1,19 @@
 package com.example.viso.service.impl;
 
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import com.example.viso.entity.PaperEntity;
+import com.example.viso.entity.WordsEntity;
 import com.example.viso.mapper.PaperMapper;
+import com.example.viso.mapper.WordsMapper;
 import com.example.viso.service.IPaperService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Collection;
 import java.util.List;
 
 @Service
-public class PaperServiceImpl implements IPaperService {
+public class PaperServiceImpl extends ServiceImpl<PaperMapper, PaperEntity> implements IPaperService {
     @Autowired
     private PaperMapper mapper;
 
