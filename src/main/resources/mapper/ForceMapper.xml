@@ -23,6 +23,6 @@
         FROM links
         WHERE category=#{category}
         ORDER BY links.value DESC
-        LIMIT 1000
+        LIMIT 100
     </select>
 </mapper>
