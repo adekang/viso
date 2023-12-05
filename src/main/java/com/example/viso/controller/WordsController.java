@@ -1,0 +1,29 @@
+package com.example.viso.controller;
+
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.example.viso.entity.WordEntity;
+import com.example.viso.entity.WordsEntity;
+import com.example.viso.service.WordsService;
+import com.example.viso.util.JsonResult;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+
+import java.util.List;
+
+@RestController
+@RequestMapping("/words")
+public class WordsController extends BaseController {
+
+    @Autowired
+    private WordsService wordsService;
+
+    @RequestMapping("/selectWordByTitle")
+    public JsonResult<List<WordsEntity>> selectWordByTitle(@RequestParam String category) {
+        QueryWrapper<WordsEntity> queryWrapper = new QueryWrapper<>();
+        queryWrapper.eq("category", category);
+        List<WordsEntity> list = wordsService.list(queryWrapper);
+        return new JsonResult<>(OK, "成功", list);
+    }
+}

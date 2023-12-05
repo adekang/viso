@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.viso.mapper.PaperMapper">
+    <resultMap id="Paper" type="com.example.viso.entity.PaperEntity">
+        <result column="submitter" property="submitter"></result>
+        <result column="authors" property="authors"></result>
+        <result column="title" property="title"></result>
+        <result column="journal" property="journal"></result>
+        <result column="doi" property="doi"></result>
+        <result column="categories" property="categories"></result>
+        <result column="abstract" property="paperAbstract"></result>
+        <result column="update_date" property="updateDate"></result>
+    </resultMap>
+    <select id="selectByCate" resultMap="Paper">
+        SELECT submitter,authors,title,journal,doi,categories,abstract,update_date
+        FROM data
+        WHERE categories LIKE #{category}
+        LIMIT 30
+    </select>
+
+    <select id="selectByName" resultMap="Paper">
+        SELECT submitter,authors,title,journal,doi,categories,abstract,update_date
+        FROM data
+        WHERE authors LIKE #{name}
+            LIMIT 30
+    </select>
+
+    <select id="selectByTitle" resultMap="Paper">
+        SELECT submitter,authors,title,journal,doi,categories,abstract,update_date
+        FROM data
+        WHERE title LIKE #{title}
+            LIMIT 30
+    </select>
+</mapper>

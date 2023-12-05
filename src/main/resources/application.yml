@@ -1,0 +1,20 @@
+server:
+  port: 8080
+ip: 127.0.0.1
+
+
+spring:
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://${ip}:3306/viso?useSSL=false&serverTimezone=UTC&allowPublicKeyRetrieval=true
+    username: root
+    password: 123456
+
+mybatis:
+  mapper-locations: classpath:mapper/*.xml
+mybatis-plus:
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  mapper-locations: classpath:mapper/*.xml
+
+
