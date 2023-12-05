@@ -1,9 +1,8 @@
 package com.example.viso.controller;
 
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
-import com.example.viso.entity.WordEntity;
 import com.example.viso.entity.WordsEntity;
-import com.example.viso.service.WordsService;
+import com.example.viso.service.impl.WordsServiceImpl;
 import com.example.viso.util.JsonResult;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -17,7 +16,7 @@ import java.util.List;
 public class WordsController extends BaseController {
 
     @Autowired
-    private WordsService wordsService;
+    private WordsServiceImpl wordsService;
 
     @RequestMapping("/findAllByCategory")
     public JsonResult<List<WordsEntity>> selectWordByTitle(@RequestParam String category) {

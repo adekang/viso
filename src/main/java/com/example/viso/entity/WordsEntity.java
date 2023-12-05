@@ -11,7 +11,7 @@ public class WordsEntity {
 
     @TableId(type = IdType.AUTO)
     private Integer id;
-    private String word;
+    private String name;
     private Integer value;
     private String category;
 }
