@@ -1,8 +1,15 @@
 package com.example.viso.entity;
 
+import com.baomidou.mybatisplus.annotation.TableField;
+import com.baomidou.mybatisplus.annotation.TableName;
+import lombok.Data;
+import lombok.Getter;
+
 import java.io.Serializable;
 import java.util.Objects;
 
+@Data
+@TableName("data")
 public class PaperEntity implements Serializable {
 
     private String submitter;
@@ -11,7 +18,10 @@ public class PaperEntity implements Serializable {
     private String journal;
     private String doi;
     private String categories;
+
+    @TableField(value = "abstract")
     private String paperAbstract;
+
     private String updateDate;
 
     @Override
@@ -41,64 +51,32 @@ public class PaperEntity implements Serializable {
         return Objects.hash(submitter, authors, title, journal, doi, categories, paperAbstract, updateDate);
     }
 
-    public String getSubmitter() {
-        return submitter;
-    }
-
     public void setSubmitter(String submitter) {
         this.submitter = submitter;
-    }
-
-    public String getAuthors() {
-        return authors;
     }
 
     public void setAuthors(String authors) {
         this.authors = authors;
     }
 
-    public String getTitle() {
-        return title;
-    }
-
     public void setTitle(String title) {
         this.title = title;
-    }
-
-    public String getJournal() {
-        return journal;
     }
 
     public void setJournal(String journal) {
         this.journal = journal;
     }
 
-    public String getDoi() {
-        return doi;
-    }
-
     public void setDoi(String doi) {
         this.doi = doi;
-    }
-
-    public String getCategories() {
-        return categories;
     }
 
     public void setCategories(String categories) {
         this.categories = categories;
     }
 
-    public String getPaperAbstract() {
-        return paperAbstract;
-    }
-
     public void setPaperAbstract(String paperAbstract) {
         this.paperAbstract = paperAbstract;
-    }
-
-    public String getUpdateDate() {
-        return updateDate;
     }
 
     public void setUpdateDate(String updateDate) {
