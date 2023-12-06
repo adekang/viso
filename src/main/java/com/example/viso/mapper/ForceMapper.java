@@ -16,4 +16,6 @@ public interface ForceMapper {
 
     List<ForceLinkEntity> selectLink(String category);
     List<ForceNodeEntity> selectNode(@Param("category") String category,@Param("names") List<String> names);
+
+    List<ForceLinkEntity> selectByName(@Param("name") String name);
 }

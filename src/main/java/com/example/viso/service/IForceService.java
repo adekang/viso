@@ -10,4 +10,5 @@ public interface IForceService {
 
     ForceEntity selectForce(String category);
 
+    List<ForceLinkEntity> selectByName(String name);
 }

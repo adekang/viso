@@ -1,6 +1,7 @@
 package com.example.viso.controller;
 
 
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.example.viso.entity.ForceEntity;
 import com.example.viso.entity.ForceLinkEntity;
 import com.example.viso.entity.ForceNodeEntity;
@@ -15,18 +16,25 @@ import java.util.List;
 
 @RestController
 @RequestMapping("Force")
-public class ForceController  extends BaseController{
+public class ForceController extends BaseController {
 
     @Autowired
     private IForceService service;
 
     @RequestMapping("selectForce")
     @CrossOrigin(origins = "*")
-    public JsonResult<ForceEntity> selectNode(String category){
-        ForceEntity force=service.selectForce(category);
+    public JsonResult<ForceEntity> selectNode(String category) {
+        ForceEntity force = service.selectForce(category);
 
-        return new JsonResult<>(OK,"查询"+category+"力导向图数据成功",force);
+        return new JsonResult<>(OK, "查询" + category + "力导向图数据成功", force);
     }
 
 
+    @RequestMapping("/selectByName")
+    public JsonResult<List<ForceLinkEntity>> selectByName(String name) {
+        List<ForceLinkEntity> list = service.selectByName(name);
+        System.out.println("--------------------------");
+        System.out.println(list);
+        return new JsonResult<>(OK, "查询成功",list);
+    }
 }
