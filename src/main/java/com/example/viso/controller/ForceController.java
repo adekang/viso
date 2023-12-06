@@ -33,8 +33,6 @@ public class ForceController extends BaseController {
     @RequestMapping("/selectByName")
     public JsonResult<List<ForceLinkEntity>> selectByName(String name) {
         List<ForceLinkEntity> list = service.selectByName(name);
-        System.out.println("--------------------------");
-        System.out.println(list);
         return new JsonResult<>(OK, "查询成功",list);
     }
 }
