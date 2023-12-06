@@ -5,7 +5,18 @@
 <mapper namespace="com.example.viso.mapper.BarMapper">
 
     <select id="selectBar" resultType="com.example.viso.entity.BarRaceEntity">
-        SELECT * FROM paper_rank WHERE category=#{category}
+        SELECT * FROM paper_rank WHERE category=#{category} And name in
+        <foreach item="item" index="index" collection="names"
+                 open="(" separator="," close=")">
+            #{item}
+        </foreach>
     </select>
 
+    <select id="selectName" resultType="String">
+        select name from paper_rank
+        where category=#{category}
+        group by name
+        order by max(value)
+        desc limit 10
+    </select>
 </mapper>
