@@ -61,6 +61,7 @@ public class PaperController extends BaseController {
     public JsonResult<List<PaperEntity>> selectByCategory(@RequestParam String categories) {
         QueryWrapper<PaperEntity> queryWrapper = new QueryWrapper<>();
         queryWrapper.eq("categories", categories);
+        queryWrapper.last("LIMIT 200"); // 限制结果集为前200条数据
         List<PaperEntity> list = service.list(queryWrapper);
         return new JsonResult<>(OK, "成功", list);
     }
