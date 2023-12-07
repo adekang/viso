@@ -21,9 +21,8 @@
     <select id="selectLink" resultType="com.example.viso.entity.ForceLinkEntity">
         SELECT source,target,links.value
         FROM links
-        WHERE category=#{category}
+        WHERE category=#{category} and value > 2
         ORDER BY links.value DESC
-
     </select>
     <select id="selectByName" resultType="com.example.viso.entity.ForceLinkEntity">
             select * from links where target=#{name} OR source=#{name}
