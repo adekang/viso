@@ -21,7 +21,7 @@ public class WordsController extends BaseController {
     @RequestMapping("/findAllByCategory")
     public JsonResult<List<WordsEntity>> selectWordByTitle(@RequestParam String category) {
         QueryWrapper<WordsEntity> queryWrapper = new QueryWrapper<>();
-        queryWrapper.eq("category", category);
+        queryWrapper.eq("category", category).and(wrapper -> wrapper.ge("value", 50));
         List<WordsEntity> list = wordsService.list(queryWrapper);
         return new JsonResult<>(OK, "成功", list);
     }
